@@ -9,29 +9,29 @@ def run()
     puts("You have reached the end of the program. Bye :)")
 end
 
-def input_handling(what_to_ask)
+def input_handling(time_unit, question)
+    
     while true do
+        puts question
         input = gets.chomp
         # used Regex to check if it's a whole number
         unless input.match(/[^0-9]/)
             return input.to_i
-        else
-            #                                        what_to_ask is plural, this makes it singular
-            print "\nThat's not an integer.\nPlease insert a whole number (#{what_to_ask[..-2]}): "
         end
+        #at this point the input is invalid
+        puts "That's invalid input. Please insert a positive integer."
     end
 end
 
 def ask_num(what_to_ask)
 
-    if what_to_ask == "ages"
-        #                             age inseted of ages
-        print "\nPlease enter your #{what_to_ask[..-2]}: "
-        return input_handling(what_to_ask)
+    if what_to_ask == "ages"   
+        question = "\nPlease enter your age: "
+        return input_handling("age", question)
     end
     
-    print "\nEnter a number of #{what_to_ask}: "
-    input_handling(what_to_ask)
+    question = "\nEnter a number of #{what_to_ask}: "
+    input_handling(what_to_ask, question)
 end
 
 def year_hour()
